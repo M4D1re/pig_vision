@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "pigvision",
+  "version": "${version}",
+  "name": "Pig Vision",
+  "description": "Client-side pig head visual replacement mod.",
+  "authors": [
+    "YourName"
+  ],
+  "environment": "client",
+
+  "entrypoints": {
+    "client": [
+      {
+        "adapter": "kotlin",
+        "value": "ru.example.pigvision.PigVisionClient"
+      }
+    ]
+  },
+
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~26.1.2",
+    "fabric-api": "*",
+    "fabric-language-kotlin": ">=1.13.6+kotlin.2.2.20"
+  }
+}
