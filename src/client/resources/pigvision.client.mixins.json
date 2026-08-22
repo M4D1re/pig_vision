@@ -3,6 +3,7 @@
   "package": "ru.example.pigvision.mixin.client",
   "compatibilityLevel": "JAVA_25",
   "client": [
+    "CustomHeadLayerMixin",
     "HumanoidArmorLayerMixin"
   ],
   "injectors": {
