@@ -1,5 +1,7 @@
 package ru.example.pigvision.mixin.client
 
+
+import ru.example.pigvision.PigVisionConfig
 import com.mojang.blaze3d.vertex.PoseStack
 import net.minecraft.client.model.HumanoidModel
 import net.minecraft.client.renderer.SubmitNodeCollector
@@ -37,7 +39,10 @@ abstract class HumanoidArmorLayerMixin<
         state: S,
         ci: CallbackInfo
     ) {
-        if (slot == EquipmentSlot.HEAD) {
+        if (
+            PigVisionConfig.enabled &&
+            slot == EquipmentSlot.HEAD
+        ) {
             ci.cancel()
         }
     }

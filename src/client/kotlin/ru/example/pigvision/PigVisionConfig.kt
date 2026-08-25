@@ -2,8 +2,24 @@ package ru.example.pigvision
 
 object PigVisionConfig {
 
+    var enabled: Boolean = true
+        private set
+
     var useResourcePackTexture: Boolean = true
         private set
+
+    fun enable() {
+        enabled = true
+    }
+
+    fun disable() {
+        enabled = false
+    }
+
+    fun toggleEnabled(): Boolean {
+        enabled = !enabled
+        return enabled
+    }
 
     fun useResourcePack() {
         useResourcePackTexture = true
@@ -13,7 +29,7 @@ object PigVisionConfig {
         useResourcePackTexture = false
     }
 
-    fun toggle(): Boolean {
+    fun toggleTexture(): Boolean {
         useResourcePackTexture = !useResourcePackTexture
         return useResourcePackTexture
     }

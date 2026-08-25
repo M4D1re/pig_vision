@@ -16,14 +16,38 @@ class PigVisionClient : ClientModInitializer {
                 ClientCommands.literal("pigvision")
 
                     .then(
+                        ClientCommands.literal("on")
+                            .executes { context ->
+                                PigVisionConfig.enable()
+
+                                context.source.sendFeedback(
+                                    Component.literal("Pig Vision: enabled")
+                                )
+
+                                1
+                            }
+                    )
+
+                    .then(
+                        ClientCommands.literal("off")
+                            .executes { context ->
+                                PigVisionConfig.disable()
+
+                                context.source.sendFeedback(
+                                    Component.literal("Pig Vision: disabled")
+                                )
+
+                                1
+                            }
+                    )
+
+                    .then(
                         ClientCommands.literal("rp")
                             .executes { context ->
                                 PigVisionConfig.useResourcePack()
 
                                 context.source.sendFeedback(
-                                    Component.literal(
-                                        "Pig Vision: RP texture enabled"
-                                    )
+                                    Component.literal("Pig Vision: RP texture enabled")
                                 )
 
                                 1
@@ -36,31 +60,7 @@ class PigVisionClient : ClientModInitializer {
                                 PigVisionConfig.useVanilla()
 
                                 context.source.sendFeedback(
-                                    Component.literal(
-                                        "Pig Vision: vanilla texture enabled"
-                                    )
-                                )
-
-                                1
-                            }
-                    )
-
-                    .then(
-                        ClientCommands.literal("toggle")
-                            .executes { context ->
-
-                                val rpEnabled = PigVisionConfig.toggle()
-
-                                val mode = if (rpEnabled) {
-                                    "RP"
-                                } else {
-                                    "vanilla"
-                                }
-
-                                context.source.sendFeedback(
-                                    Component.literal(
-                                        "Pig Vision: $mode texture enabled"
-                                    )
+                                    Component.literal("Pig Vision: vanilla texture enabled")
                                 )
 
                                 1

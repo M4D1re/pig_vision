@@ -9,3 +9,8 @@
 /pigvision toggle
 /pigvision rp
 /pigvision toggle
+/pigvision off
+/pigvision on
+/pigvision rp
+/pigvision vanilla
+/pigvision off

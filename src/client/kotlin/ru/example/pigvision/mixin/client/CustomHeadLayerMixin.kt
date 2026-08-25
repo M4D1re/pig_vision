@@ -30,7 +30,10 @@ abstract class CustomHeadLayerMixin {
         xRot: Float,
         ci: CallbackInfo
     ) {
-        if (state.entityType == EntityType.PLAYER) {
+        if (
+            PigVisionConfig.enabled &&
+            state.entityType == EntityType.PLAYER
+        ) {
             state.wornHeadType = SkullBlock.Types.PIGLIN
         }
     }
