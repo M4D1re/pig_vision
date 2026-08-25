@@ -15,7 +15,7 @@ glintSpeed:0.5
 glintStrength:0.75
 graphicsPreset:"fancy"
 prioritizeChunkUpdates:1
-fullscreen:false
+fullscreen:true
 exclusiveFullscreen:false
 gamma:0.5
 guiScale:0
@@ -64,7 +64,7 @@ damageTiltStrength:1.0
 highContrast:false
 highContrastBlockOutline:false
 narratorHotkey:true
-resourcePacks:[]
+resourcePacks:["vanilla"]
 incompatibleResourcePacks:[]
 lastServer:
 lang:ru_ru
