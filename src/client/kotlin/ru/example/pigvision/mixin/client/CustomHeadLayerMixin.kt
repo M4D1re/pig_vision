@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.SubmitNodeCollector
 import net.minecraft.client.renderer.entity.layers.CustomHeadLayer
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState
 import net.minecraft.resources.Identifier
-import net.minecraft.world.entity.EntityType
+import net.minecraft.client.renderer.entity.state.AvatarRenderState
 import net.minecraft.world.level.block.SkullBlock
 import org.spongepowered.asm.mixin.Mixin
 import org.spongepowered.asm.mixin.injection.At
@@ -32,22 +32,25 @@ abstract class CustomHeadLayerMixin {
     ) {
         if (
             PigVisionConfig.enabled &&
-            state.entityType == EntityType.PLAYER
+            state is AvatarRenderState
         ) {
             state.wornHeadType = SkullBlock.Types.PIGLIN
         }
     }
+}
 
     @ModifyArg(
         method = ["resolveSkullRenderType"],
-        at = At(
-            value = "INVOKE",
-            target = "Lnet/minecraft/client/renderer/blockentity/SkullBlockRenderer;" +
-                    "getSkullRenderType(" +
-                    "Lnet/minecraft/world/level/block/SkullBlock\$Type;" +
-                    "Lnet/minecraft/resources/Identifier;" +
-                    ")Lnet/minecraft/client/renderer/rendertype/RenderType;"
-        ),
+        at = [
+                At(
+                value = "INVOKE",
+                target = "Lnet/minecraft/client/renderer/blockentity/SkullBlockRenderer;" +
+                        "getSkullRenderType(" +
+                        "Lnet/minecraft/world/level/block/SkullBlock\$Type;" +
+                        "Lnet/minecraft/resources/Identifier;" +
+                        ")Lnet/minecraft/client/renderer/rendertype/RenderType;"
+            )
+        ],
         index = 1
     )
     private fun selectPiglinTexture(originalTexture: Identifier?): Identifier {
@@ -63,4 +66,3 @@ abstract class CustomHeadLayerMixin {
             )
         }
     }
-}
